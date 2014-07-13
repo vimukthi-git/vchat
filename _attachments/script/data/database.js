@@ -3,39 +3,39 @@
  */
 var Database = $.inherit({
 
-  _name: "vchat",
-  _user: "test",
-  _pass: "test",
-  _connection : null,
+  _name: "vchat_data",
+  _vchatdb : null,
 
   __constructor : function() { // constructor
 
   },
 
-  startSession : function(successFunction, errorFunction){
+  startSession : function(username, password, successFunction, errorFunction){
     var _this = this;
-    _this._connection = $.couch.db(_this._name);
+    _this._vchatdb = $.couch.db(_this._name);
     $.couch.login({
-      name: _this._user,
-      password: _this._pass,
+      name: username,
+      password: password,
       success: successFunction,
       error: errorFunction
     });
   },
 
-  mapLocaleFunction: function (doc) {
-    if (doc.Type == 'locale')  emit(null, doc);
+  getBuddies: function(buddyId, successFunc, errorFunc){
+    var _this = this;
+    var buddies = null;
+    _this._vchatdb.view("getBuddies/getBuddies", {
+        success: successFunc,
+        error: errorFunc,
+        reduce: false
+    });
+  },
+
+  setPeerId: function(peerId){
+    this._vchatdb.saveDoc(new Contact(VCHAT.USER_ID, peerId), {
+      success: function() {
+      }
+    });
   }
-
-
-  //    $db.query(_this.mapLocaleFunction, "_count", "javascript", {
-//      success: _this.processData,
-//      error: function (status) {
-//        console.log(status);
-//      },
-//      reduce: false
-//    });
-
-
 
 });

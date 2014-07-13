@@ -4,8 +4,8 @@
 var VideoLayout = $.inherit({
   name: null,
   panels: [
-    { type: 'top', size: '50%', resizable: true, content: 'main video' },
-    { type: 'bottom', size: '50%', resizable: true, content: 'other videos chats if present' }
+    { type: 'top', size: '75%', resizable: true, content: 'main video' },
+    { type: 'bottom', size: '25%', resizable: true, content: 'other videos chats if present' }
   ],
   __constructor : function(name) { // constructor
     this.name = name;

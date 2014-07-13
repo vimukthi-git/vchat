@@ -8,17 +8,29 @@ var BuddyListGrid = $.inherit({
     toolbar 	: true
   },
   columns: [
-    { field: 'fname', caption: 'Buddies', size: '100%', sortable: true }
+    { field: 'userId', caption: 'Buddies', size: '100%', sortable: true }
   ],
-  records: [
-    { recid: 1, fname: 'John', lname: 'doe', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
-    { recid: 2, fname: 'Stuart', lname: 'Motzart', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
-    { recid: 3, fname: 'Jin', lname: 'Franson', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
-    { recid: 4, fname: 'Susan', lname: 'Ottie', email: 'jdoe@gmail.com', sdate: '4/3/2012' }
-  ],
-  onClick: function (event) {
+  records: [],
+
+  refreshBuddies: function(){
+    VCHAT.DB.getBuddies( VCHAT.USER_ID, function(data) {
+      w2ui[VCHAT.BUDDY_LIST].clear();
+      for(var i = 0; i < data.rows.length; i++){
+        var obj = data.rows[i].value;
+        if(obj.userId != VCHAT.USER_ID) {
+          w2ui[VCHAT.BUDDY_LIST].add(new Contact(obj.userId, obj.peerId));
+        }
+      }
+      //console.log(data);
+    }, function(status) {
+      console.log(status);
+    });
+  },
+
+  onClick: function(event){
     //w2ui['grid2'].clear();
     var record = this.get(event.recid);
     console.log(record);
+    var con = VCHAT.CONNECTOR.connectChat(record.peerId);
   }
 });

@@ -24,5 +24,10 @@ var ConversationLayout = $.inherit({
     w2ui[_this.name].content('main', $().w2layout(_this._video));
     w2ui[_this.name].content('right', $().w2layout(_this._chat));
     _this._chat.init();
+  },
+
+  handleRemoteMessage: function(message){
+    var _this = this;
+    _this._chat.handleRemoteMessage(message);
   }
 });

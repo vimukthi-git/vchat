@@ -7,8 +7,6 @@ var Topbar = $.inherit({
     { type: 'html', id: 'apptitle', html: '<div style="padding: 12px 20px; font-size: 18px;">VChat</div>'},
     { type: 'break', id: 'break1' },
     { type: 'menu', id: 'newmenu', caption: 'New', icon: 'fa-table', count: 17, items: [
-      { text: 'Voice Call', icon: 'fa-camera', count: 5 },
-      { text: 'Video Call', icon: 'fa-picture'},
       { text: 'Buddy', icon: 'fa-camera', count: 5 },
       { text: 'Group', icon: 'fa-camera', count: 5 }
     ]},
@@ -16,6 +14,7 @@ var Topbar = $.inherit({
     { type: 'break', id: 'break2' },
     { type: 'menu', id: 'managemenu', caption: 'Vimukthi', icon: 'fa-table', count: 17, items: [
       { text: 'Profile', icon: 'fa-camera', count: 5 },
+      { text: 'Privacy', icon: 'fa-camera', count: 5 },
       { text: 'Buddies', icon: 'fa-camera', count: 5 },
       { text: 'Groups', icon: 'fa-picture'}
     ]},

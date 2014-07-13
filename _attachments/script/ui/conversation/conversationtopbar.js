@@ -5,8 +5,11 @@ var ConversationTopbar = $.inherit({
   name: null,
 
   items: [
-    { type: 'html', id: 'conversationtitle', html: '<div style="padding: 12px 20px; font-size: 14px;">Conversation</div>'}
-
+    { type: 'html', id: 'conversationtitle', html: '<div style="padding: 12px 20px; font-size: 14px;">Talk to John</div>'},
+    { type: 'break', id: 'break1' },
+    { type: 'button',  id: 'voicecall',  caption: 'Call', icon: 'fa-flag' },
+    { type: 'break', id: 'break2' },
+    { type: 'button',  id: 'videocall',  caption: 'Video Call', icon: 'fa-flag' }
   ],
 
   __constructor : function(name) { // constructor

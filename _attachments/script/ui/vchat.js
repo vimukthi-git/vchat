@@ -21,20 +21,22 @@ var VChat = $.inherit({
     // initialization
     _this._mainLayout = new MainLayout();
     _this._topbar = new Topbar();
-    _this._mainContent = new ConversationLayout("test");
+    //_this._mainContent = new ConversationLayout("test");
     _this._buddyListGrid = new BuddyListGrid();
     _this._statusbar = new Statusbar();
     $(_this._mainLayout.getDiv()).w2layout(_this._mainLayout);
     w2ui[VCHAT.MAIN_LAYOUT].content('top', $().w2toolbar(_this._topbar));
-    w2ui[VCHAT.MAIN_LAYOUT].content('main', $().w2layout(_this._mainContent));
+    //w2ui[VCHAT.MAIN_LAYOUT].content('main', $().w2layout(_this._mainContent));
+    w2ui[VCHAT.MAIN_LAYOUT].content('main', '<div>Click a Buddy from the list to get started</div>');
     w2ui[VCHAT.MAIN_LAYOUT].content('left', $().w2grid(_this._buddyListGrid));
     w2ui[VCHAT.MAIN_LAYOUT].content('bottom', $().w2toolbar(_this._statusbar));
-    _this._mainContent.init();
-
+    _this._buddyListGrid.refreshBuddies();
+    setInterval(function(){_this._buddyListGrid.refreshBuddies();}, 10000);
+    //_this._mainContent.init();
+    VCHAT.CONNECTOR = new Connector();
+    VCHAT.CONNECTOR.init();
 
   },
-
-
 
 //  processData: function (data) {
 //    console.log(data);

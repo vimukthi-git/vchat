@@ -2,20 +2,28 @@
  * Created by vimukthib on 7/13/14.
  */
 var Chat = $.inherit({
-  _id: null,
+  recid: null,
   _message: null,
   _date: null,
   _from: null,
   _to: null,
 
+  __constructor : function(id, message, date, from, to) { // constructor
+    this.recid = id;
+    this._message = message;
+    this._date = date;
+    this._from = from;
+    this._to = to;
+  },
+
   /**
-   * GetterSetter for _id
+   * GetterSetter for recid
    */
   setId : function (value) {
-    this._id = value;
+    this.recid = value;
   },
   getId : function () {
-    return this._id;
+    return this.recid;
   },
   /**
    * GetterSetter for message
