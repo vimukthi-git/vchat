@@ -2,11 +2,11 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html">
-    <title>CINCO Internationalization App</title>
+    <title>VChat browser based peer to peer video chat</title>
 
-<link rel="stylesheet" type="text/css" href="http://w2ui.com/src/w2ui-1.3.min.css" />
+      <link rel="stylesheet" type="text/css" href="style/w2ui-1.3.css" />
+      <link rel="stylesheet" type="text/css" href="style/font-awesome.css" />
       <link rel="stylesheet" type="text/css" href="style/main.css" />
-
   </head>
   <body>
     <div id="main_layout" style="width: 100%; height: 100%;position: absolute;">
@@ -14,12 +14,28 @@
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="script/jquery.min.js"></script>
-    <script src="script/jquery.browser.min.js"></script>
+    <script src="script/lib/jquery.min.js"></script>
+    <script src="script/lib/jquery.browser.min.js"></script>
+    <script src="script/lib/jquery.inherit.min.js"></script>
 	<script src="/_utils/script/json2.js"></script>
     <script src="/_utils/script/sha1.js"></script>
     <script src="/_utils/script/jquery.couch.js"></script>
-	<script type="text/javascript" src="script/w2ui-1.3.min.js"></script>
-    <script src="script/app.js"></script>
+	<script type="text/javascript" src="script/lib/w2ui-1.3.min.js"></script>
+    <script src="script/bootstrap.js"></script>
+    <script src="script/ui/vchat.js"></script>
+    <script src="script/ui/mainlayout.js"></script>
+    <script src="script/ui/topbar.js"></script>
+    <script src="script/ui/conversation/conversationlayout.js"></script>
+    <script src="script/ui/conversation/conversationtopbar.js"></script>
+    <script src="script/ui/conversation/chat/chatlayout.js"></script>
+    <script src="script/ui/conversation/chat/chattoolbar.js"></script>
+    <script src="script/ui/conversation/chat/chatinput.js"></script>
+    <script src="script/ui/conversation/chat/chathistory.js"></script>
+    <script src="script/ui/conversation/video/videolayout.js"></script>
+    <script src="script/ui/conversation/video/video.js"></script>
+    <script src="script/ui/conversation/video/groupvideo.js"></script>
+    <script src="script/ui/buddylistgrid.js"></script>
+    <script src="script/ui/statusbar.js"></script>
+    <script src="script/data/database.js"></script>
   </body>
 </html>
