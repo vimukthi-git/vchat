@@ -18,7 +18,7 @@ var ConversationLayout = $.inherit({
   init: function(){
     var _this = this;
     _this._topbar = new ConversationTopbar(_this.name + '-topbar');
-    _this._chat = new ChatLayout(_this.name + '-chat');
+    _this._chat = new ChatLayout(_this.name + '-chat', _this.name);
     _this._video = new VideoLayout(_this.name + '-video');
     w2ui[_this.name].content('top', $().w2toolbar(_this._topbar));
     w2ui[_this.name].content('main', $().w2layout(_this._video));

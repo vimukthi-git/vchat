@@ -43,13 +43,14 @@ var Connector = $.inherit({
     };
   },
 
-  handleConnection: function(connection){
+  handleConnection: function(connection, ui){
     var _this = this;
     // Handle a chat connection.
     if (connection.label === 'chat') {
-      _this._chatConnections[connection.peer] = _this.createConvUi(connection.peer);
+      _this._chatConnections[connection.peer] = [connection, _this.createConvUi(connection.peer)];
       connection.on('data', function (data) {
-        _this._chatConnections[connection.peer].handleRemoteMessage(new Chat(new Date().getTime(), data, new Date(), "", ""));
+        console.log(data);
+        _this._chatConnections[connection.peer][1].handleRemoteMessage(new Chat(new Date().getTime(), data, new Date(), "", ""));
       });
       connection.on('close', function () {
         alert(connection.peer + ' has left the chat.');
@@ -99,6 +100,10 @@ var Connector = $.inherit({
       });
     }
     _this._chatConnections[peerid] = peerui;
+  },
+
+  sendChat: function(peerid, message){
+    this._chatConnections[peerid][0].send(message);
   },
 
   createConvUi: function(peerid){

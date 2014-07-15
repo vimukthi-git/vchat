@@ -32,10 +32,28 @@ var Database = $.inherit({
   },
 
   setPeerId: function(peerId){
-    this._vchatdb.saveDoc(new Contact(VCHAT.USER_ID, peerId), {
-      success: function() {
+    var _this = this;
+    _this._vchatdb.openDoc(VCHAT.USER_ID, {
+      success: function(doc) {
+        _this._vchatdb.removeDoc(doc, { success: function() {
+          _this._vchatdb.saveDoc(new Contact(VCHAT.USER_ID, peerId), {
+            success: function() {
+
+            }
+          });
+          console.log("------------- delete ----");
+        }
+        });
+      },
+      error: function(e){
+        _this._vchatdb.saveDoc(new Contact(VCHAT.USER_ID, peerId), {
+          success: function() {
+
+          }
+        });
       }
     });
+
   }
 
 });
